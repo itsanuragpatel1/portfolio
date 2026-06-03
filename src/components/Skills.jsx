@@ -1,97 +1,90 @@
 import React from 'react';
-import { SpotlightCard } from './ui/SpotLightCard';
-import { SectionLabel } from './ui/SectionLabel';
 
-// Updated TechItem with Grayscale-to-Color logic
-const TechItem = ({ image, name, category }) => (
-  <div className="flex items-center gap-6 group cursor-default">
-    <div className="w-14 h-14 flex items-center justify-center p-2 border border-neutral-100 group-hover:border-blue-600 group-hover:bg-blue-50/50 transition-all duration-500 rounded-xl overflow-hidden bg-white">
+const SkillPill = ({ name, image }) => (
+  <div className="flex items-center gap-2.5 p-2 rounded-lg bg-neutral-50/50 dark:bg-neutral-950 border border-neutral-200/60 dark:border-neutral-800/60 transition-all duration-200">
+    <div className="w-5 h-5 flex items-center justify-center p-0.5 rounded overflow-hidden shrink-0 bg-white dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40">
       <img 
         src={image} 
-        alt={`${name} logo`}
-        className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out scale-90 group-hover:scale-100"
+        alt={`${name} icon`} 
+        className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" 
       />
     </div>
-    <div className="flex flex-col">
-      <span className="text-sm font-black uppercase tracking-widest text-neutral-900 group-hover:text-blue-600 transition-colors duration-300">
-        {name}
-      </span>
-      <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-tighter">
-        {category}
-      </span>
+    <span className="text-[11px] font-semibold text-neutral-800 dark:text-neutral-200">
+      {name}
+    </span>
+  </div>
+);
+
+const SkillCategory = ({ title, skills }) => (
+  <div className="bg-neutral-50/20 dark:bg-neutral-900/10 border border-neutral-250/60 dark:border-neutral-850 p-5 rounded-xl flex flex-col hover:border-neutral-350 dark:hover:border-neutral-700 transition-colors duration-300">
+    <h3 className="text-[10px] font-bold font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-4 border-b border-neutral-100 dark:border-neutral-850/65 pb-2.5">
+      {title}
+    </h3>
+    <div className="flex flex-col gap-2">
+      {skills.map((skill) => (
+        <SkillPill key={skill.name} {...skill} />
+      ))}
     </div>
   </div>
 );
 
 export default function Skills() {
-  // Define your tech assets here for easy updates
-  const techStack = {
-    foundation: [
-      { name: "C++", category: "Algorithms & DSA", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" },
-      { name: "JavaScript", category: "ES12+ / Node Core", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" },
-      { name: "Python", category: "AI Scripting", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
-    ],
-    mern: [
-      { name: "MongoDB", category: "NoSQL Database", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" },
-      { name: "Express", category: "Backend Framework", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" },
-      { name: "React", category: "Frontend Library", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" },
-      { name: "Node.js", category: "Runtime Environment", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" },
-      { name: "Tailwind", category: "Design Systems", image: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
-      { name: "Postman", category: "API Testing", image: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" },
-    ],
-    specialized: [
-      { name: "Gen Ai", category: "Multimodal LLM", image: "https://www.svgrepo.com/show/486520/ai.svg" },
-      { name: "GitHub", category: "Version Control", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" },
-      { name: "Vercel", category: "Deployement", image: "https://www.vectorlogo.zone/logos/vercel/vercel-icon.svg" },
-      { name: "Git", category: "Version Control", image: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" },
-    
-    ]
-  };
+  const categories = [
+    {
+      title: "Languages",
+      skills: [
+        { name: "C++", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" },
+        { name: "JavaScript", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" }
+      ]
+    },
+    {
+      title: "Frontend",
+      skills: [
+        { name: "React", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" },
+        { name: "HTML", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" },
+        { name: "CSS", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" },
+        { name: "Tailwind", image: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" }
+      ]
+    },
+    {
+      title: "Backend",
+      skills: [
+        { name: "Node.js", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" },
+        { name: "Express.js", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" }
+      ]
+    },
+    {
+      title: "Database",
+      skills: [
+        { name: "MongoDB", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" },
+        { name: "MySQL", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" }
+      ]
+    },
+    {
+      title: "Tools",
+      skills: [
+        { name: "Git", image: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" },
+        { name: "GitHub", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" }
+      ]
+    }
+  ];
 
   return (
-    <section id="skills" className="py-40 px-6 bg-white border-y border-neutral-100">
+    <section id="skills" className="py-20 md:py-24 px-6 md:px-12 bg-transparent border-b border-neutral-100 dark:border-neutral-900/60 transition-colors duration-300 scroll-mt-28">
       <div className="max-w-7xl mx-auto">
-        <SectionLabel number="01" text="Tech Architecture" />
-        {/* <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-24">
-          Technical <br /> <span className="text-blue-600">Stack.</span>
-        </h2> */}
+        
+        {/* Section Header */}
+        <h2 className="text-xl md:text-2xl font-sans font-bold tracking-tight text-neutral-850 dark:text-neutral-50 mb-8">
+          Skills and Technologies
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-neutral-200">
-          
-          {/* Section 01: Foundation */}
-          <SpotlightCard className="lg:col-span-1 border-r border-b">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-neutral-400 mb-10">01 / Foundation</h4>
-            <div className="space-y-12">
-              {techStack.foundation.map((tech) => (
-                <TechItem key={tech.name} {...tech} />
-              ))}
-            </div>
-          </SpotlightCard>
-
-          {/* Section 02: MERN Stack */}
-          <SpotlightCard className="md:col-span-2 lg:col-span-2 border-r border-b bg-neutral-50/30">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-neutral-400 mb-10">02 / MERN Development</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-              {techStack.mern.map((tech) => (
-                <TechItem key={tech.name} {...tech} />
-              ))}
-            </div>
-          </SpotlightCard>
-
-          {/* Section 03: Specialized Tools */}
-          <SpotlightCard className="lg:col-span-3 border-r border-b flex flex-col md:flex-row items-center justify-between gap-12">
-            <div className="max-w-xs w-full">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-neutral-400 mb-4">03 / AI & Infrastructure</h4>
-              {/* <p className="text-neutral-500 text-sm italic">Integrating Gen-AI for projects like Just Prompt and Krishi Mitra.</p> */}
-            </div>
-            <div className="flex flex-wrap gap-12 flex-1 justify-start md:justify-end">
-              {techStack.specialized.map((tech) => (
-                <TechItem key={tech.name} {...tech} />
-              ))}
-            </div>
-          </SpotlightCard>
-
+        {/* Categorized Columns Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          {categories.map((category) => (
+            <SkillCategory key={category.title} {...category} />
+          ))}
         </div>
+
       </div>
     </section>
   );

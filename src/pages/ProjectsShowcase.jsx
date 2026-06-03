@@ -1,5 +1,5 @@
-import React from 'react';
-import { Github, ExternalLink } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { Github, ExternalLink, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projects } from '../assets/projects.js';
 
@@ -65,32 +65,41 @@ const ProjectCard = ({ id, title, category, description, tech, github, live, ima
   </div>
 );
 
-export default function Projects() {
+export default function ProjectsShowcase() {
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <section id="work" className="py-20 md:py-24 px-6 md:px-12 bg-transparent border-b border-neutral-100 dark:border-neutral-900/60 transition-colors duration-300 scroll-mt-28">
+    <section className="py-32 px-6 md:px-12 bg-transparent transition-colors duration-300 min-h-screen">
       <div className="max-w-7xl mx-auto">
         
-        {/* Section Header */}
-        <h2 className="text-xl md:text-2xl font-sans font-bold tracking-tight text-neutral-850 dark:text-neutral-50 mb-8">
-          Featured Projects
-        </h2>
-
-        {/* 2-Column Professional Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, idx) => (
-            <ProjectCard key={idx} {...project} />
-          ))}
+        {/* Back Link */}
+        <div className="mb-8 select-none">
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-2 text-xs font-bold text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
+          >
+            <ArrowLeft size={14} /> Back to Home
+          </Link>
         </div>
 
-        {/* Dynamic button to go to all projects section */}
-        <div className="flex justify-center mt-10 select-none">
-          <Link 
-            to="/projects"
-            className="inline-flex items-center gap-1.5 font-sans text-xs font-bold text-neutral-700 dark:text-neutral-350 hover:text-neutral-950 dark:hover:text-white bg-neutral-50/50 dark:bg-neutral-900/10 border border-neutral-200 dark:border-neutral-800 px-6 py-3 rounded-lg transition-all hover:bg-neutral-100 dark:hover:bg-neutral-850 cursor-pointer shadow-sm"
-          >
-            View All Projects
-            <span>&rarr;</span>
-          </Link>
+        {/* Section Header */}
+        <div className="mb-12 border-b border-neutral-100 dark:border-neutral-900/60 pb-8">
+          <h2 className="text-2xl md:text-3xl font-sans font-bold tracking-tight text-neutral-850 dark:text-neutral-50 mb-2">
+            Project Showcase
+          </h2>
+          <p className="text-neutral-550 dark:text-neutral-450 text-xs md:text-sm max-w-xl">
+            A comprehensive showcase of production SaaS dashboards, Generative AI suites, and multilingual agricultural accessibility platforms.
+          </p>
+        </div>
+
+        {/* 2-Column Projects Showcase Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} {...project} />
+          ))}
         </div>
 
       </div>

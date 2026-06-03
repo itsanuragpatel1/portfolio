@@ -1,45 +1,95 @@
-import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowUpRight, Copy, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import resume from '../assets/resume.pdf';
 
 export default function Footer() {
+  const [copied, setCopied] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('anuragpateloriginal@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer id="contact" className="py-40 px-6 bg-neutral-900 text-white border-t border-neutral-800">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-16 mb-24">
-          <div>
-            <p className="text-blue-500 font-mono text-sm tracking-widest mb-8 uppercase font-bold">Contact Anurag</p>
-            <h2 className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
-              Let's Build <br />The Future.
-            </h2>
-          </div>
-          <div className="flex flex-col gap-6">
-            <a href="mailto:Anuragpateloriginal@gmail.com" className="text-2xl md:text-4xl font-light border-b border-neutral-800 pb-4 hover:text-blue-400 transition-all">
-              Anuragpateloriginal@gmail.com
-            </a>
-            <div className="flex gap-10">
-              <a href="https://github.com/itsanuragpatel1" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-white transition-colors uppercase text-[10px] font-black tracking-[0.2em]">GitHub</a>
-              <a href="https://linkedin.com/in/itsanuragpatel" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-white transition-colors uppercase text-[10px] font-black tracking-[0.2em]">LinkedIn</a>
-              <a href={resume} target="_blank" className="text-neutral-500 hover:text-white transition-colors uppercase text-[10px] font-black tracking-[0.2em]">Resume</a>
-            </div>
-          </div>
+    <footer className="py-12 px-6 md:px-12 bg-neutral-50 dark:bg-[#08080a] text-neutral-500 dark:text-neutral-450 border-t border-neutral-200 dark:border-neutral-900 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-6">
+        
+        {/* Left Side: Brand Signature & Copyright */}
+        <div className="flex flex-col md:flex-row md:items-center gap-2.5 text-center md:text-left select-none">
+          <span className="text-xs font-bold text-neutral-900 dark:text-white uppercase tracking-tight">
+            Anurag Patel
+          </span>
+          <span className="hidden md:inline text-neutral-300 dark:text-neutral-800">|</span>
+          <p className="text-[11px] font-mono tracking-wide uppercase text-neutral-400 dark:text-neutral-500">
+            &copy; {currentYear} All rights reserved.
+          </p>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center pt-16 border-t border-neutral-800 gap-8">
-          <p className="text-neutral-600 text-[10px] font-mono tracking-[0.3em] uppercase">
-            &copy; {new Date().getFullYear()} AP. DESIGNED WITH PRECISION.
-          </p>
+        {/* Right Side: Horizontal Navigation & Social Links */}
+        <div className="flex flex-col md:flex-row items-center gap-6 lg:gap-8">
+          <div className="flex items-center gap-6">
+            <a 
+              href="https://github.com/itsanuragpatel1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors"
+            >
+              GitHub
+            </a>
+            <a 
+              href="https://linkedin.com/in/itsanuragpatel" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors"
+            >
+              LinkedIn
+            </a>
+            <Link 
+              to="/resume" 
+              className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors"
+            >
+              Resume
+            </Link>
+          </div>
+          
+          <span className="hidden md:inline text-neutral-300 dark:text-neutral-800">|</span>
+          
+          {/* Email fully written out with inline copy trigger */}
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-850 rounded-lg text-xs font-mono text-neutral-600 dark:text-neutral-350 shadow-sm select-none">
+            <a 
+              href="mailto:anuragpateloriginal@gmail.com" 
+              className="hover:underline hover:text-neutral-950 dark:hover:text-white transition-colors"
+            >
+              anuragpateloriginal@gmail.com
+            </a>
+            <button 
+              onClick={handleCopyEmail}
+              className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-900 rounded transition-colors cursor-pointer text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+              title="Copy email to clipboard"
+            >
+              {copied ? <Check size={11} className="text-emerald-500" /> : <Copy size={11} />}
+            </button>
+          </div>
+
+          <span className="hidden md:inline text-neutral-300 dark:text-neutral-800">|</span>
+          
+          {/* Scroll to Top Trigger */}
           <button 
             onClick={scrollToTop}
-            className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-neutral-400 hover:text-white transition-colors"
+            className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 hover:text-neutral-950 dark:hover:text-white transition-all cursor-pointer"
           >
-            Back To Top <ArrowUpRight className="w-4 h-4" />
+            Top <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
         </div>
+
       </div>
     </footer>
   );
