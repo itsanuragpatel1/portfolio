@@ -31,6 +31,65 @@ function ScrollToHash() {
 }
 
 function App() {
+  useEffect(() => {
+    // 1. Initialize Cal.com JS Embed API
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    window.Cal("init", { origin: "https://cal.com" });
+
+    // 2. Sync theme dynamically on load and toggles
+    const updateCalTheme = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      window.Cal("ui", {
+        theme: isDark ? "dark" : "light",
+        styles: {
+          branding: {
+            brandColor: isDark ? "#ffffff" : "#09090b"
+          }
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view"
+      });
+    };
+
+    updateCalTheme();
+
+    const observer = new MutationObserver(() => {
+      updateCalTheme();
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <BrowserRouter>
       <ScrollToHash />

@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
-import { Calendar, Send, Loader2, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Calendar, Send, Loader2 } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(() => 
+    typeof document !== 'undefined' ? document.documentElement.classList.contains('dark') : false
+  );
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'));
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -144,16 +158,17 @@ export default function Contact() {
           <p className="text-xs md:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-md mx-auto mb-6">
             Prefer a direct introduction sync? Choose a time slot that works best for you and let's jump on a quick sync call.
           </p>
-          <a
-            href="https://cal.com/itsanuragpatel"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            data-cal-link="itsanuragpatel/15min"
+            data-cal-config={JSON.stringify({
+              layout: "month_view",
+              theme: isDarkMode ? "dark" : "light"
+            })}
             className="inline-flex items-center gap-2 font-sans text-xs font-bold text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white bg-white dark:bg-neutral-950 hover:bg-neutral-50 dark:hover:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-6 py-3 rounded-lg transition-all shadow-sm cursor-pointer"
           >
             <Calendar size={13} />
             Schedule a Sync
-            <ExternalLink size={11} className="opacity-60" />
-          </a>
+          </button>
         </div>
 
       </div>
