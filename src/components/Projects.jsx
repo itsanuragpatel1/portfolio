@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { projects } from '../assets/projects.js';
 
 const ProjectCard = ({ id, title, category, description, tech, github, live, image }) => (
-  <div className="group border border-neutral-200 dark:border-neutral-800 bg-neutral-50/10 dark:bg-neutral-900/10 p-5 md:p-6 rounded-xl flex flex-col justify-between hover:border-neutral-350 dark:hover:border-neutral-700 transition-all duration-300 shadow-sm hover:shadow-md">
+  <div className="group border border-neutral-200 dark:border-neutral-800 bg-neutral-50/10 dark:bg-neutral-900/10 p-5 md:p-6 rounded-xl flex flex-col justify-between hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 shadow-sm hover:shadow-md">
     <div>
       {/* Visual Image Showcase Link */}
       <Link to={`/projects/${id}`} className="block overflow-hidden bg-neutral-100 dark:bg-neutral-900 aspect-[16/9] relative rounded-lg border border-neutral-200/60 dark:border-neutral-800/60 mb-5 cursor-pointer">
@@ -16,15 +16,15 @@ const ProjectCard = ({ id, title, category, description, tech, github, live, ima
       </Link>
       
       {/* Category & Title Link */}
-      <p className="text-neutral-450 dark:text-neutral-450 font-mono text-[9px] tracking-wider uppercase mb-1.5 font-bold select-none">
+      <p className="text-neutral-500 dark:text-neutral-400 font-mono text-[9px] tracking-wider uppercase mb-1.5 font-bold select-none">
         {category}
       </p>
       <Link to={`/projects/${id}`} className="block cursor-pointer">
-        <h3 className="text-lg font-sans font-bold text-neutral-850 dark:text-neutral-50 mb-2 tracking-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+        <h3 className="text-lg font-sans font-bold text-neutral-900 dark:text-white mb-2 tracking-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
           {title}
         </h3>
       </Link>
-      <p className="text-neutral-550 dark:text-neutral-450 text-xs md:text-sm leading-relaxed mb-5">
+      <p className="text-neutral-600 dark:text-neutral-400 text-xs md:text-sm leading-relaxed mb-5">
         {description}
       </p>
     </div>
@@ -71,7 +71,7 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
-        <h2 className="text-xl md:text-2xl font-sans font-bold tracking-tight text-neutral-850 dark:text-neutral-50 mb-8">
+        <h2 className="text-xl md:text-2xl font-sans font-bold tracking-tight text-neutral-900 dark:text-white mb-8">
           Featured Projects
         </h2>
 
@@ -86,7 +86,7 @@ export default function Projects() {
         <div className="flex justify-center mt-10 select-none">
           <Link 
             to="/projects"
-            className="inline-flex items-center gap-1.5 font-sans text-xs font-bold text-neutral-700 dark:text-neutral-350 hover:text-neutral-950 dark:hover:text-white bg-neutral-50/50 dark:bg-neutral-900/10 border border-neutral-200 dark:border-neutral-800 px-6 py-3 rounded-lg transition-all hover:bg-neutral-100 dark:hover:bg-neutral-850 cursor-pointer shadow-sm"
+            className="inline-flex items-center gap-1.5 font-sans text-xs font-bold text-neutral-700 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white bg-neutral-50/50 dark:bg-neutral-900/10 border border-neutral-200 dark:border-neutral-800 px-6 py-3 rounded-lg transition-all hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer shadow-sm"
           >
             View All Projects
             <span>&rarr;</span>

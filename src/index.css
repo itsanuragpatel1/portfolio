@@ -12,11 +12,13 @@
     scroll-behavior: smooth;
     transition: background-color 0.2s ease, border-color 0.2s ease;
   }
+
   body {
     background-color: #ffffff;
     color: #111111;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
+
   html.dark body {
     background-color: #09090b;
     color: #f4f4f5;
@@ -24,29 +26,41 @@
 }
 
 /* Custom Minimalist Scrollbar */
-::-webkit-scrollbar { 
-  width: 6px; 
+::-webkit-scrollbar {
+  width: 6px;
 }
-::-webkit-scrollbar-track { 
-  background: transparent; 
+
+::-webkit-scrollbar-track {
+  background: transparent;
 }
-::-webkit-scrollbar-thumb { 
-  background: #d4d4d8; 
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
   border-radius: 10px;
 }
-html.dark ::-webkit-scrollbar-thumb { 
-  background: #27272a; 
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #27272a;
 }
-::-webkit-scrollbar-thumb:hover { 
-  background: #a1a1aa; 
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
 }
-html.dark ::-webkit-scrollbar-thumb:hover { 
-  background: #3f3f46; 
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
 }
 
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in {
@@ -54,13 +68,25 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 }
 
 @keyframes backdrop-fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes modal-scale {
-  from { opacity: 0; transform: scale(0.97) translateY(8px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .animate-backdrop-fade {

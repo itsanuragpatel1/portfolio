@@ -52,6 +52,14 @@ export default function Footer() {
             >
               LinkedIn
             </a>
+            <a 
+              href="https://leetcode.com/u/itsanuragpatel/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors"
+            >
+              LeetCode
+            </a>
             <Link 
               to="/resume" 
               className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors"
