@@ -27,18 +27,41 @@ export default function Contact() {
     if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       setError('Please fill in all fields before sending.');
       return;
     }
     setIsSubmitting(true);
-    setTimeout(() => {
+    setError('');
+
+    try {
+      const response = await fetch('https://formspree.io/f/xykayqya', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        const data = await response.json();
+        if (data && data.errors) {
+          setError(data.errors.map((err) => err.message).join(', '));
+        } else {
+          setError('Oops! There was a problem submitting your form.');
+        }
+      }
+    } catch (err) {
+      setError('Oops! There was a network connection error. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-    }, 1500);
+    }
   };
 
   return (
@@ -153,10 +176,10 @@ export default function Contact() {
         {/* Let's Talk CTA */}
         <div className="text-center bg-neutral-50/40 dark:bg-neutral-900/10 border border-neutral-200 dark:border-neutral-800/80 p-6 md:p-8 rounded-2xl shadow-sm">
           <h3 className="text-lg font-sans font-bold text-neutral-900 dark:text-neutral-50 mb-2">
-            Let's Talk
+            Prefer a Call?
           </h3>
           <p className="text-xs md:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-md mx-auto mb-6">
-            Prefer a direct introduction sync? Choose a time slot that works best for you and let's jump on a quick sync call.
+           Pick a time slot that fits your schedule, and let’s build something impactful together.
           </p>
           <button
             data-cal-link="itsanuragpatel/15min"
@@ -167,7 +190,7 @@ export default function Contact() {
             className="inline-flex items-center gap-2 font-sans text-xs font-bold text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white bg-white dark:bg-neutral-950 hover:bg-neutral-50 dark:hover:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-6 py-3 rounded-lg transition-all shadow-sm cursor-pointer"
           >
             <Calendar size={13} />
-            Schedule a Sync
+            Schedule Call
           </button>
         </div>
 
