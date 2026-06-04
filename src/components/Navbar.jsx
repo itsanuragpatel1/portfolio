@@ -33,13 +33,14 @@ export default function Navbar() {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
-  const navLinks = ['Skills', 'Work', 'Experience', 'Achievements', 'Education', 'Contact', 'Resume'];
+  const navLinks = ['Skills', 'Work', 'Experience', 'Achievements', 'Education', 'Blog', 'Contact', 'Resume'];
 
   const handleNavLinkClick = (e, link) => {
     const isResume = link.toLowerCase() === 'resume';
+    const isBlog = link.toLowerCase() === 'blog';
     setIsMenuOpen(false);
     
-    if (isResume) return;
+    if (isResume || isBlog) return;
     
     // Smooth scroll if already on homepage
     if (window.location.pathname === '/') {
@@ -80,7 +81,8 @@ export default function Navbar() {
         <div className="hidden md:flex gap-8 items-center">
           {navLinks.map((link) => {
             const isResume = link.toLowerCase() === 'resume';
-            const targetPath = isResume ? '/resume' : `/#${link.toLowerCase()}`;
+            const isBlog = link.toLowerCase() === 'blog';
+            const targetPath = isResume ? '/resume' : isBlog ? '/blog' : `/#${link.toLowerCase()}`;
             return (
               <Link 
                 key={link} 
@@ -119,7 +121,8 @@ export default function Navbar() {
         <div className="md:hidden border-b border-neutral-200/80 dark:border-neutral-900 bg-white dark:bg-neutral-950 px-6 py-4 flex flex-col gap-3 animate-fade-in">
           {navLinks.map((link) => {
             const isResume = link.toLowerCase() === 'resume';
-            const targetPath = isResume ? '/resume' : `/#${link.toLowerCase()}`;
+            const isBlog = link.toLowerCase() === 'blog';
+            const targetPath = isResume ? '/resume' : isBlog ? '/blog' : `/#${link.toLowerCase()}`;
             return (
               <Link
                 key={link}

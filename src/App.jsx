@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import ProjectsShowcase from './pages/ProjectsShowcase';
 import ProjectDetail from './pages/ProjectDetail';
 import ResumePage from './pages/ResumePage';
+import BlogList from './pages/BlogList';
+import BlogDetail from './pages/BlogDetail';
 
 // Component that monitors route location changes and handles smooth scrolling to hash anchors
 function ScrollToHash() {
@@ -101,6 +103,8 @@ function App() {
             <Route path="/projects" element={<ProjectsShowcase />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/resume" element={<ResumePage />} />
+            <Route path="/blog" element={<BlogList />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
           </Routes>
         </main>
         <Footer />

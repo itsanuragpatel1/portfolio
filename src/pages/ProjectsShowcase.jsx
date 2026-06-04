@@ -8,13 +8,13 @@ const ProjectCard = ({ id, title, category, description, tech, github, live, ima
     <div>
       {/* Visual Image Showcase Link */}
       <Link to={`/projects/${id}`} className="block overflow-hidden bg-neutral-100 dark:bg-neutral-900 aspect-[16/9] relative rounded-lg border border-neutral-200/60 dark:border-neutral-800/60 mb-5 cursor-pointer">
-        <img 
-          src={image} 
-          alt={title} 
-          className="object-cover w-full h-full group-hover:scale-[1.01] transition-transform duration-500 ease-in-out" 
+        <img
+          src={image}
+          alt={title}
+          className="object-cover w-full h-full group-hover:scale-[1.01] transition-transform duration-500 ease-in-out"
         />
       </Link>
-      
+
       {/* Category & Title Link */}
       <p className="text-neutral-450 dark:text-neutral-450 font-mono text-[9px] tracking-wider uppercase mb-1.5 font-bold select-none">
         {category}
@@ -33,29 +33,29 @@ const ProjectCard = ({ id, title, category, description, tech, github, live, ima
       {/* Tech stack badges */}
       <div className="flex flex-wrap gap-1.5 mb-5">
         {tech.map((t, i) => (
-          <span 
-            key={i} 
+          <span
+            key={i}
             className="text-[9px] font-bold px-2 py-0.5 bg-neutral-100 dark:bg-neutral-950 border border-neutral-200/50 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 rounded select-none"
           >
             {t}
           </span>
         ))}
       </div>
-      
+
       {/* Action coordinates */}
       <div className="flex gap-6 border-t border-neutral-100 dark:border-neutral-900/50 pt-4 mt-auto">
-        <a 
-          href={github} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-1.5 text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
         >
           Source <Github size={12} />
         </a>
-        <a 
-          href={live} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={live}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-1.5 text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
         >
           Live <ExternalLink size={12} />
@@ -74,11 +74,11 @@ export default function ProjectsShowcase() {
   return (
     <section className="py-32 px-6 md:px-12 bg-transparent transition-colors duration-300 min-h-screen">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Back Link */}
         <div className="mb-8 select-none">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="inline-flex items-center gap-2 text-xs font-bold text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
           >
             <ArrowLeft size={14} /> Back to Home
@@ -91,7 +91,7 @@ export default function ProjectsShowcase() {
             Project Showcase
           </h2>
           <p className="text-neutral-550 dark:text-neutral-450 text-xs md:text-sm max-w-xl">
-            A comprehensive showcase of production SaaS dashboards, Generative AI suites, and multilingual agricultural accessibility platforms.
+          Building scalable web applications, AI-powered solutions, and impactful digital experiences that solve real-world problems. 
           </p>
         </div>
 

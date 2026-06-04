@@ -40,7 +40,7 @@ export default function ProjectDetail() {
 
   const initializePlayer = () => {
     if (!project?.video || !playerRef.current) return;
-    
+
     const videoId = project.video.split('/embed/')[1]?.split('?')[0];
     if (!videoId) return;
 
@@ -117,11 +117,11 @@ export default function ProjectDetail() {
   return (
     <section className="py-28 md:py-36 px-6 md:px-12 bg-transparent transition-colors duration-300 min-h-screen">
       <div className="max-w-4xl mx-auto">
-        
+
         {/* Back Link Navigators */}
         <div className="flex items-center justify-between mb-10 select-none pb-4 border-b border-neutral-100 dark:border-neutral-900/60">
-          <Link 
-            to="/projects" 
+          <Link
+            to="/projects"
             className="inline-flex items-center gap-2 text-xs font-bold text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
           >
             <ArrowLeft size={14} /> Back to Projects
@@ -142,7 +142,7 @@ export default function ProjectDetail() {
           <p className="text-neutral-550 dark:text-neutral-400 text-sm md:text-base leading-relaxed max-w-3xl mb-6">
             {project.description}
           </p>
-          
+
           {/* Action CTAs */}
           <div className="flex flex-wrap gap-3.5 select-none">
             <a
@@ -180,17 +180,17 @@ export default function ProjectDetail() {
                   allowFullScreen
                 />
               ) : (
-                <button 
-                  onClick={() => setIsPlaying(true)} 
+                <button
+                  onClick={() => setIsPlaying(true)}
                   className="absolute inset-0 w-full h-full cursor-pointer overflow-hidden flex items-center justify-center bg-black/5 hover:bg-black/25 transition-all duration-300 outline-none border-none p-0"
                 >
                   {/* Thumbnail image (fully clear by default) */}
-                  <img 
-                    src={project.image} 
-                    alt={`${project.title} video thumbnail`} 
+                  <img
+                    src={project.image}
+                    alt={`${project.title} video thumbnail`}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-[1.01]"
                   />
-                  
+
                   {/* Visual Glassmorphic play button container */}
                   <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-neutral-900/80 dark:bg-white/90 backdrop-blur-md text-white dark:text-neutral-950 flex items-center justify-center shadow-2xl transition-all duration-300 scale-95 group-hover:scale-100">
                     <Play size={24} className="fill-current ml-1" />
@@ -203,9 +203,9 @@ export default function ProjectDetail() {
                 </button>
               )
             ) : (
-              <img 
-                src={project.image} 
-                alt={`${project.title} preview`} 
+              <img
+                src={project.image}
+                alt={`${project.title} preview`}
                 className="absolute inset-0 w-full h-full object-cover"
               />
             )}
@@ -220,13 +220,13 @@ export default function ProjectDetail() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {project.gallery.map((imgUrl, index) => (
-                <div 
+                <div
                   key={index}
                   className="overflow-hidden bg-neutral-100 dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 aspect-[16/9]"
                 >
-                  <img 
-                    src={imgUrl} 
-                    alt={`${project.title} gallery asset ${index + 1}`} 
+                  <img
+                    src={imgUrl}
+                    alt={`${project.title} gallery asset ${index + 1}`}
                     className="object-cover w-full h-full hover:scale-[1.02] transition-transform duration-500 ease-in-out"
                   />
                 </div>
@@ -240,7 +240,7 @@ export default function ProjectDetail() {
           <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-850 dark:text-neutral-50 select-none">
             Project Overview
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="space-y-2">
               <span className="text-[9px] font-bold font-mono text-neutral-450 dark:text-neutral-500 uppercase tracking-wider select-none">
@@ -276,8 +276,8 @@ export default function ProjectDetail() {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {project.features.map((feature, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="flex items-start gap-2.5 text-xs md:text-sm text-neutral-555 dark:text-neutral-400 leading-relaxed"
               >
                 <CheckCircle2 size={13} className="text-neutral-400 dark:text-neutral-600 shrink-0 mt-0.5" />
@@ -292,11 +292,11 @@ export default function ProjectDetail() {
           <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-850 dark:text-neutral-50 mb-6 select-none">
             Tech Stack Breakdown
           </h3>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {project.categorizedTech.map((techGroup, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-neutral-50/20 dark:bg-neutral-900/10 border border-neutral-250/60 dark:border-neutral-800/80 p-4 rounded-xl flex flex-col"
               >
                 <span className="text-[9px] font-bold font-mono uppercase tracking-wider text-neutral-450 dark:text-neutral-500 mb-3 border-b border-neutral-100 dark:border-neutral-850/60 pb-2 select-none">
@@ -304,7 +304,7 @@ export default function ProjectDetail() {
                 </span>
                 <div className="flex flex-wrap gap-1.5 mt-1">
                   {techGroup.items.map((techItem, techIndex) => (
-                    <span 
+                    <span
                       key={techIndex}
                       className="text-[9px] font-semibold px-2 py-0.5 bg-white dark:bg-neutral-900 border border-neutral-200/60 dark:border-neutral-850/60 text-neutral-600 dark:text-neutral-400 rounded select-none"
                     >
@@ -320,18 +320,18 @@ export default function ProjectDetail() {
         {/* 7. Footer Project Links (Centered Premium Buttons) */}
         <div className="border-t border-neutral-100 dark:border-neutral-900/60 pt-12 flex flex-col items-center select-none">
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <a 
-              href={project.live} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 text-xs font-bold text-white bg-neutral-900 hover:bg-neutral-800 dark:text-neutral-950 dark:bg-white dark:hover:bg-neutral-100 border border-neutral-900 dark:border-white px-6 py-2.5 rounded-lg transition-colors cursor-pointer shadow-sm"
             >
               Live Project <ExternalLink size={12} />
             </a>
-            <a 
-              href={project.github} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 text-xs font-bold text-neutral-700 dark:text-neutral-350 hover:text-neutral-950 dark:hover:text-white bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-850 border border-neutral-200 dark:border-neutral-800 px-6 py-2.5 rounded-lg transition-colors cursor-pointer"
             >
               GitHub Source <Github size={12} />
