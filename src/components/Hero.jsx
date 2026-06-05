@@ -260,7 +260,7 @@ export default function Hero() {
         typeCommand("whoami", async () => {
           if (!active) return;
           await delay(100);
-          
+
           // Type first output line
           const output1 = 'Anurag Patel';
           setTerminalLines(prev => [...prev, { type: 'output', text: '', isTyping: true }]);
@@ -279,9 +279,9 @@ export default function Hero() {
             next[next.length - 1].isTyping = false;
             return next;
           });
-          
+
           await delay(100);
-          
+
           // Type second output line
           const output2 = 'Full-Stack Developer & CS Engineering Student';
           setTerminalLines(prev => [...prev, { type: 'output-sub', text: '', isTyping: true }]);
@@ -524,7 +524,7 @@ export default function Hero() {
     }
 
     setIsTyping(false);
-    
+
     // Auto-focus input after command completes
     setTimeout(() => {
       if (inputRef.current) {
@@ -538,219 +538,218 @@ export default function Hero() {
       <style>{terminalStyles}</style>
       <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-28 pb-16 overflow-hidden bg-transparent transition-colors duration-300">
 
-      <div className="max-w-4xl mx-auto w-full relative z-10 flex flex-col items-center">
-        {/* Ambient Radial Gradient Glow */}
-        <div className="absolute -inset-4 sm:-inset-10 bg-radial from-cyan-500/10 via-purple-500/5 to-transparent blur-3xl opacity-75 pointer-events-none select-none dark:from-cyan-500/15 dark:via-purple-500/10" />
+        <div className="max-w-4xl mx-auto w-full relative z-10 flex flex-col items-center">
+          {/* Ambient Radial Gradient Glow */}
+          <div className="absolute -inset-4 sm:-inset-10 bg-radial from-cyan-500/10 via-purple-500/5 to-transparent blur-3xl opacity-75 pointer-events-none select-none dark:from-cyan-500/15 dark:via-purple-500/10" />
 
-        {/* Terminal Chrome Frame Container */}
-        <div className="w-full bg-[#09090b]/95 text-[#e4e4e7] rounded-xl border border-neutral-800/80 shadow-lg hover:border-neutral-700/80 overflow-hidden transition-all duration-300 relative z-10">
+          {/* Terminal Chrome Frame Container */}
+          <div className="w-full bg-[#09090b]/95 text-[#e4e4e7] rounded-xl border border-neutral-800/80 shadow-lg hover:border-neutral-700/80 overflow-hidden transition-all duration-300 relative z-10">
 
-          {/* Terminal Title Bar */}
-          <div className="bg-[#101013] border-b border-neutral-900 px-5 py-3 flex items-center justify-between select-none">
-            <div className="flex gap-2 group/dots">
-              <span className="w-3 h-3 rounded-full bg-rose-500 border border-rose-600/30 flex items-center justify-center text-[7px] text-rose-950 font-bold transition-all duration-150 cursor-pointer select-none">
-                <span className="opacity-0 group-hover/dots:opacity-100 transition-opacity">&times;</span>
-              </span>
-              <span className="w-3 h-3 rounded-full bg-amber-500 border border-amber-600/30 flex items-center justify-center text-[7px] text-amber-950 font-bold transition-all duration-150 cursor-pointer select-none">
-                <span className="opacity-0 group-hover/dots:opacity-100 transition-opacity">&minus;</span>
-              </span>
-              <span className="w-3 h-3 rounded-full bg-emerald-500 border border-emerald-600/30 flex items-center justify-center text-[5px] text-emerald-950 font-bold transition-all duration-150 cursor-pointer select-none">
-                <span className="opacity-0 group-hover/dots:opacity-100 transition-opacity">&#43;</span>
-              </span>
+            {/* Terminal Title Bar */}
+            <div className="bg-[#101013] border-b border-neutral-900 px-5 py-3 flex items-center justify-between select-none">
+              <div className="flex gap-2 group/dots">
+                <span className="w-3 h-3 rounded-full bg-rose-500 border border-rose-600/30 flex items-center justify-center text-[7px] text-rose-950 font-bold transition-all duration-150 cursor-pointer select-none">
+                  <span className="opacity-0 group-hover/dots:opacity-100 transition-opacity">&times;</span>
+                </span>
+                <span className="w-3 h-3 rounded-full bg-amber-500 border border-amber-600/30 flex items-center justify-center text-[7px] text-amber-950 font-bold transition-all duration-150 cursor-pointer select-none">
+                  <span className="opacity-0 group-hover/dots:opacity-100 transition-opacity">&minus;</span>
+                </span>
+                <span className="w-3 h-3 rounded-full bg-emerald-500 border border-emerald-600/30 flex items-center justify-center text-[5px] text-emerald-950 font-bold transition-all duration-150 cursor-pointer select-none">
+                  <span className="opacity-0 group-hover/dots:opacity-100 transition-opacity">&#43;</span>
+                </span>
+              </div>
+
+              <div className="text-[10px] sm:text-xs font-mono text-neutral-400 flex items-center gap-2">
+                <Terminal className="w-3 h-3 text-cyan-400 animate-pulse" />
+                <span>anurag@portfolio</span>
+                <span className="text-neutral-600">:</span>
+                <span className="text-sky-400 font-bold">~</span>
+              </div>
+
+              <div className="w-[52px]" /> {/* Spacer to center path title */}
             </div>
-            
-            <div className="text-[10px] sm:text-xs font-mono text-neutral-400 flex items-center gap-2">
-              <Terminal className="w-3 h-3 text-cyan-400 animate-pulse" />
-              <span>anurag@portfolio</span>
-              <span className="text-neutral-600">:</span>
-              <span className="text-sky-400 font-bold">~</span>
-            </div>
 
-            <div className="w-[52px]" /> {/* Spacer to center path title */}
-          </div>
+            {/* Interactive Shell Body */}
+            <div
+              ref={terminalBodyRef}
+              onClick={handleTerminalClick}
+              className="p-6 md:p-8 h-[280px] sm:h-[320px] md:h-[380px] overflow-y-auto font-mono text-left text-xs md:text-sm leading-relaxed text-neutral-300 cursor-text select-text scroll-smooth"
+            >
 
-          {/* Interactive Shell Body */}
-          <div
-            ref={terminalBodyRef}
-            onClick={handleTerminalClick}
-            className="p-6 md:p-8 h-[280px] sm:h-[320px] md:h-[380px] overflow-y-auto font-mono text-left text-xs md:text-sm leading-relaxed text-neutral-300 cursor-text select-text scroll-smooth"
-          >
+              {/* Sequential command output stream logs */}
+              <div className="space-y-1.5">
+                {terminalLines.map((line, index) => {
+                  if (line.type === 'input') {
+                    const isCurrentTypingLine = isTyping && index === terminalLines.length - 1;
+                    return (
+                      <div key={index} className="flex items-center gap-1.5 select-none mt-5 first:mt-0">
+                        <span className="font-mono text-xs md:text-sm">
+                          <span className="text-emerald-500 font-bold">anurag@portfolio</span>
+                          <span className="text-neutral-500">:</span>
+                          <span className="text-sky-400 font-bold">~</span>
+                          <span className="text-neutral-400 font-bold">$</span>
+                        </span>
+                        <span className="break-all whitespace-pre-wrap text-cyan-400 dark:text-cyan-300 font-bold flex items-center">
+                          {line.text}
+                          {(isCurrentTypingLine || line.isTyping) && (
+                            <span className="terminal-cursor w-1.5 h-3.5 bg-cyan-400 dark:bg-cyan-300 inline-block ml-1 align-middle" />
+                          )}
+                        </span>
+                      </div>
+                    );
+                  }
 
-            {/* Sequential command output stream logs */}
-            <div className="space-y-1.5">
-              {terminalLines.map((line, index) => {
-                if (line.type === 'input') {
-                  const isCurrentTypingLine = isTyping && index === terminalLines.length - 1;
+                  const text = line.text;
+                  let textColor = "text-neutral-300 dark:text-neutral-250 font-medium"; // default output
+
+                  if (line.type === 'output-success' || text.startsWith('✓') || text.startsWith('Opening') || text.includes('[Generative AI') || text.includes('[Full-Stack') || text.includes('[Agri-Tech') || text.includes('[Automation')) {
+                    textColor = "text-emerald-400 dark:text-emerald-350 font-semibold";
+                  } else if (text.startsWith('bash: command not found:')) {
+                    textColor = "text-rose-500 dark:text-rose-450 font-bold";
+                  } else if (
+                    text.includes('Available commands') ||
+                    text.includes('Technical Skills') ||
+                    text.includes('Professional Experience') ||
+                    text.includes('Featured Projects') ||
+                    text.includes('Academic Qualifications') ||
+                    text.includes('Reach out to')
+                  ) {
+                    textColor = "text-amber-400 dark:text-amber-350 font-bold mt-3 first:mt-0";
+                  } else if (line.type === 'output-sub' || text.startsWith('    ')) {
+                    textColor = "text-neutral-400 dark:text-neutral-500 text-[11px] md:text-xs";
+                  }
+
                   return (
-                    <div key={index} className="flex items-center gap-1.5 select-none mt-5 first:mt-0">
-                      <span className="font-mono text-xs md:text-sm">
-                        <span className="text-emerald-500 font-bold">anurag@portfolio</span>
-                        <span className="text-neutral-500">:</span>
-                        <span className="text-sky-400 font-bold">~</span>
-                        <span className="text-neutral-400 font-bold">$</span>
-                      </span>
-                      <span className="break-all whitespace-pre-wrap text-cyan-400 dark:text-cyan-300 font-bold flex items-center">
-                        {line.text}
-                        {(isCurrentTypingLine || line.isTyping) && (
-                          <span className="terminal-cursor w-1.5 h-3.5 bg-cyan-400 dark:bg-cyan-300 inline-block ml-1 align-middle" />
-                        )}
-                      </span>
+                    <div key={index} className={`${textColor} break-all whitespace-pre-wrap pl-1`}>
+                      <HighlightTerminalText text={text} line={line} />
+                      {line.isTyping && (
+                        <span className="terminal-cursor w-1.5 h-3.5 bg-cyan-400 dark:bg-cyan-300 inline-block ml-1 align-middle" />
+                      )}
                     </div>
                   );
-                }
+                })}
+              </div>
 
-                const text = line.text;
-                let textColor = "text-neutral-300 dark:text-neutral-250 font-medium"; // default output
+              {/* User Input Prompt (active when sequence finishes) */}
+              {showButtons && !isTyping && (
+                <form onSubmit={handleCommandSubmit} className="flex items-center gap-1.5 mt-5 select-none">
+                  <span className="font-mono text-xs md:text-sm">
+                    <span className="text-emerald-500 font-bold">anurag@portfolio</span>
+                    <span className="text-neutral-500">:</span>
+                    <span className="text-sky-400 font-bold">~</span>
+                    <span className="text-neutral-400 font-bold">$</span>
+                  </span>
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={inputVal}
+                    onChange={(e) => setInputVal(e.target.value)}
+                    placeholder="type 'help'..."
+                    disabled={isTyping}
+                    className="flex-1 bg-transparent border-none outline-none font-mono text-xs md:text-sm text-cyan-400 caret-cyan-400 pl-1 placeholder-neutral-800 font-bold"
+                    autoFocus
+                    autoComplete="off"
+                  />
+                  <button type="submit" aria-label="Submit command" className="text-neutral-600 hover:text-white transition-colors cursor-pointer pr-1">
+                    <CornerDownLeft size={12} />
+                  </button>
+                </form>
+              )}
 
-                if (line.type === 'output-success' || text.startsWith('✓') || text.startsWith('Opening') || text.includes('[Generative AI') || text.includes('[Full-Stack') || text.includes('[Agri-Tech') || text.includes('[Automation')) {
-                  textColor = "text-emerald-400 dark:text-emerald-350 font-semibold";
-                } else if (text.startsWith('bash: command not found:')) {
-                  textColor = "text-rose-500 dark:text-rose-450 font-bold";
-                } else if (
-                  text.includes('Available commands') ||
-                  text.includes('Technical Skills') ||
-                  text.includes('Professional Experience') ||
-                  text.includes('Featured Projects') ||
-                  text.includes('Academic Qualifications') ||
-                  text.includes('Reach out to')
-                ) {
-                  textColor = "text-amber-400 dark:text-amber-350 font-bold mt-3 first:mt-0";
-                } else if (line.type === 'output-sub' || text.startsWith('    ')) {
-                  textColor = "text-neutral-400 dark:text-neutral-500 text-[11px] md:text-xs";
-                }
-
-                return (
-                  <div key={index} className={`${textColor} break-all whitespace-pre-wrap pl-1`}>
-                    <HighlightTerminalText text={text} line={line} />
-                    {line.isTyping && (
-                      <span className="terminal-cursor w-1.5 h-3.5 bg-cyan-400 dark:bg-cyan-300 inline-block ml-1 align-middle" />
-                    )}
-                  </div>
-                );
-              })}
             </div>
 
-            {/* User Input Prompt (active when sequence finishes) */}
-            {showButtons && !isTyping && (
-              <form onSubmit={handleCommandSubmit} className="flex items-center gap-1.5 mt-5 select-none">
-                <span className="font-mono text-xs md:text-sm">
-                  <span className="text-emerald-500 font-bold">anurag@portfolio</span>
-                  <span className="text-neutral-500">:</span>
-                  <span className="text-sky-400 font-bold">~</span>
-                  <span className="text-neutral-400 font-bold">$</span>
-                </span>
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={inputVal}
-                  onChange={(e) => setInputVal(e.target.value)}
-                  placeholder="type 'help'..."
+            {/* Quick CLI command pills */}
+            <div className="bg-[#09090b] border-t border-neutral-900 px-5 py-3 flex items-center gap-2 flex-wrap text-left select-none min-h-[45px]">
+              <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-widest mr-2 shrink-0 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" /> CLI Quick tags:
+              </span>
+              {['help', 'whoami', 'about', 'skills', 'experience', 'projects', 'education', 'resume', 'contact', 'clear'].map((cmd) => (
+                <button
+                  key={cmd}
+                  onClick={() => !isTyping && handleQuickTagClick(cmd)}
                   disabled={isTyping}
-                  className="flex-1 bg-transparent border-none outline-none font-mono text-xs md:text-sm text-cyan-400 caret-cyan-400 pl-1 placeholder-neutral-800 font-bold"
-                  autoFocus
-                  autoComplete="off"
-                />
-                <button type="submit" aria-label="Submit command" className="text-neutral-600 hover:text-white transition-colors cursor-pointer pr-1">
-                  <CornerDownLeft size={12} />
+                  className={`px-2.5 py-1 rounded-md border text-[10px] font-mono transition-all ${isTyping
+                      ? 'bg-neutral-900 border-neutral-850 text-neutral-600 cursor-not-allowed select-none'
+                      : 'bg-[#141418] hover:bg-neutral-800 border-neutral-800 text-neutral-400 hover:text-white cursor-pointer hover:border-neutral-700'
+                    }`}
+                >
+                  {cmd}
                 </button>
-              </form>
-            )}
+              ))}
+            </div>
 
           </div>
 
-          {/* Quick CLI command pills */}
-          <div className="bg-[#09090b] border-t border-neutral-900 px-5 py-3 flex items-center gap-2 flex-wrap text-left select-none min-h-[45px]">
-            <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-widest mr-2 shrink-0 flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" /> CLI Quick tags:
-            </span>
-            {['help', 'whoami', 'about', 'skills', 'experience', 'projects', 'education', 'resume', 'contact', 'clear'].map((cmd) => (
-              <button
-                key={cmd}
-                onClick={() => !isTyping && handleQuickTagClick(cmd)}
-                disabled={isTyping}
-                className={`px-2.5 py-1 rounded-md border text-[10px] font-mono transition-all ${
-                  isTyping
-                    ? 'bg-neutral-900 border-neutral-850 text-neutral-600 cursor-not-allowed select-none'
-                    : 'bg-[#141418] hover:bg-neutral-800 border-neutral-800 text-neutral-400 hover:text-white cursor-pointer hover:border-neutral-700'
-                }`}
+          {/* Clean, Vercel-Style Professional CTA Buttons */}
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3.5 items-center justify-center w-full mt-10 animate-fade-in select-none relative z-10 max-w-2xl">
+            <a
+              href="#work"
+              className="w-full sm:w-auto text-center font-sans text-xs font-bold text-white bg-neutral-950 hover:bg-neutral-900 dark:text-neutral-950 dark:bg-white dark:hover:bg-neutral-100 border border-neutral-950 dark:border-white px-6 py-2.5 rounded-lg transition-all cursor-pointer shadow-sm hover:scale-[1.01] active:scale-[0.99]"
+            >
+              View Projects
+            </a>
+
+            <Link
+              to="/resume"
+              className="w-full sm:w-auto text-center font-sans text-xs font-bold text-neutral-800 dark:text-neutral-200 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800 px-6 py-2.5 rounded-lg transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99]"
+            >
+              Resume
+            </Link>
+
+            <a
+              href="#contact"
+              className="w-full sm:w-auto text-center font-sans text-xs font-bold text-neutral-800 dark:text-neutral-200 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800 px-6 py-2.5 rounded-lg transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99]"
+            >
+              Connect
+            </a>
+
+            <div className="flex gap-2.5 mt-1 sm:mt-0 select-none shrink-0">
+              <a
+                href="https://github.com/itsanuragpatel1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all cursor-pointer flex items-center justify-center hover:scale-[1.03] active:scale-[0.97]"
+                title="GitHub Profile"
+                aria-label="GitHub Profile"
               >
-                {cmd}
-              </button>
-            ))}
+                <Github size={15} />
+              </a>
+              <a
+                href="https://linkedin.com/in/itsanuragpatel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all cursor-pointer flex items-center justify-center hover:scale-[1.03] active:scale-[0.97]"
+                title="LinkedIn Profile"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin size={15} />
+              </a>
+              <a
+                href="https://leetcode.com/u/itsanuragpatel/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all cursor-pointer flex items-center justify-center hover:scale-[1.03] active:scale-[0.97]"
+                title="LeetCode Profile"
+                aria-label="LeetCode Profile"
+              >
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" className="shrink-0">
+                  <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
+                </svg>
+              </a>
+              <a
+                href="mailto:Anuragpateloriginal@gmail.com"
+                className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all cursor-pointer flex items-center justify-center hover:scale-[1.03] active:scale-[0.97]"
+                title="Send Email"
+                aria-label="Send Email"
+              >
+                <Mail size={15} />
+              </a>
+            </div>
           </div>
 
         </div>
 
-        {/* Clean, Vercel-Style Professional CTA Buttons */}
-        <div className="flex flex-col sm:flex-row flex-wrap gap-3.5 items-center justify-center w-full mt-10 animate-fade-in select-none relative z-10 max-w-2xl">
-          <a
-            href="#work"
-            className="w-full sm:w-auto text-center font-sans text-xs font-bold text-white bg-neutral-950 hover:bg-neutral-900 dark:text-neutral-950 dark:bg-white dark:hover:bg-neutral-100 border border-neutral-950 dark:border-white px-6 py-2.5 rounded-lg transition-all cursor-pointer shadow-sm hover:scale-[1.01] active:scale-[0.99]"
-          >
-            View Projects
-          </a>
-
-          <Link
-            to="/resume"
-            className="w-full sm:w-auto text-center font-sans text-xs font-bold text-neutral-800 dark:text-neutral-200 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800 px-6 py-2.5 rounded-lg transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99]"
-          >
-            Resume
-          </Link>
-
-          <a
-            href="#contact"
-            className="w-full sm:w-auto text-center font-sans text-xs font-bold text-neutral-800 dark:text-neutral-200 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800 px-6 py-2.5 rounded-lg transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99]"
-          >
-             Connect
-          </a>
-
-          <div className="flex gap-2.5 mt-1 sm:mt-0 select-none shrink-0">
-            <a
-              href="https://github.com/itsanuragpatel1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all cursor-pointer flex items-center justify-center hover:scale-[1.03] active:scale-[0.97]"
-              title="GitHub Profile"
-              aria-label="GitHub Profile"
-            >
-              <Github size={15} />
-            </a>
-            <a
-              href="https://linkedin.com/in/itsanuragpatel"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all cursor-pointer flex items-center justify-center hover:scale-[1.03] active:scale-[0.97]"
-              title="LinkedIn Profile"
-              aria-label="LinkedIn Profile"
-            >
-              <Linkedin size={15} />
-            </a>
-            <a
-              href="https://leetcode.com/u/itsanuragpatel/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all cursor-pointer flex items-center justify-center hover:scale-[1.03] active:scale-[0.97]"
-              title="LeetCode Profile"
-              aria-label="LeetCode Profile"
-            >
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" className="shrink-0">
-                <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
-              </svg>
-            </a>
-            <a
-              href="mailto:Anuragpateloriginal@gmail.com"
-              className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all cursor-pointer flex items-center justify-center hover:scale-[1.03] active:scale-[0.97]"
-              title="Send Email"
-              aria-label="Send Email"
-            >
-              <Mail size={15} />
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
+      </section>
     </>
   );
 }

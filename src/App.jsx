@@ -8,6 +8,7 @@ import ProjectDetail from './pages/ProjectDetail';
 import ResumePage from './pages/ResumePage';
 import BlogList from './pages/BlogList';
 import BlogDetail from './pages/BlogDetail';
+import { Analytics } from '@vercel/analytics/react';
 
 // Component that monitors route location changes and handles smooth scrolling to hash anchors
 function ScrollToHash() {
@@ -108,6 +109,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <Analytics />
       </div>
     </BrowserRouter>
   );

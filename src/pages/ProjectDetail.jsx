@@ -332,7 +332,7 @@ export default function ProjectDetail() {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 text-xs font-bold text-neutral-700 dark:text-neutral-350 hover:text-neutral-950 dark:hover:text-white bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-850 border border-neutral-200 dark:border-neutral-800 px-6 py-2.5 rounded-lg transition-colors cursor-pointer"
+              className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 text-xs font-bold text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800 px-6 py-2.5 rounded-lg transition-colors cursor-pointer"
             >
               GitHub Source <Github size={12} />
             </a>

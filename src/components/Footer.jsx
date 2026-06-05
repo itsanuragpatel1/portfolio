@@ -71,7 +71,7 @@ export default function Footer() {
           <span className="hidden md:inline text-neutral-300 dark:text-neutral-800">|</span>
           
           {/* Email fully written out with inline copy trigger */}
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-850 rounded-lg text-xs font-mono text-neutral-600 dark:text-neutral-350 shadow-sm select-none">
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-lg text-xs font-mono text-neutral-600 dark:text-neutral-400 shadow-sm select-none">
             <a 
               href="mailto:anuragpateloriginal@gmail.com" 
               className="hover:underline hover:text-neutral-950 dark:hover:text-white transition-colors"

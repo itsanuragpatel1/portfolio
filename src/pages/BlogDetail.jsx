@@ -118,7 +118,7 @@ export default function BlogDetail() {
                 <h2 className="text-xl md:text-2xl font-sans font-bold text-neutral-900 dark:text-white tracking-tight border-b border-neutral-100 dark:border-neutral-900/50 pb-2">
                   {section.title}
                 </h2>
-                <p className="text-neutral-600 dark:text-neutral-350 text-sm md:text-base leading-relaxed md:leading-8 whitespace-pre-line">
+                <p className="text-neutral-600 dark:text-neutral-300 text-sm md:text-base leading-relaxed md:leading-8 whitespace-pre-line">
                   {section.content}
                 </p>
               </div>

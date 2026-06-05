@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { projects } from '../assets/projects.js';
 
 const ProjectCard = ({ id, title, category, description, tech, github, live, image }) => (
-  <div className="group border border-neutral-200 dark:border-neutral-800 bg-neutral-50/10 dark:bg-neutral-900/10 p-5 md:p-6 rounded-xl flex flex-col justify-between hover:border-neutral-350 dark:hover:border-neutral-700 transition-all duration-300 shadow-sm hover:shadow-md">
+  <div className="group border border-neutral-200 dark:border-neutral-800 bg-neutral-50/10 dark:bg-neutral-900/10 p-5 md:p-6 rounded-xl flex flex-col justify-between hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 shadow-sm hover:shadow-md">
     <div>
       {/* Visual Image Showcase Link */}
       <Link to={`/projects/${id}`} className="block overflow-hidden bg-neutral-100 dark:bg-neutral-900 aspect-[16/9] relative rounded-lg border border-neutral-200/60 dark:border-neutral-800/60 mb-5 cursor-pointer">
