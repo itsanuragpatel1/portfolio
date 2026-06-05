@@ -6,7 +6,7 @@ export default function Achievements() {
     {
       title: "200+ Solved",
       subtitle: "DSA Problem Solving",
-      desc: "Solved 200+ algorithmic problems across LeetCode & GeeksforGeeks platforms, focusing on trees, graphs, and dynamic programming.",
+      desc: "Solved 200+ algorithmic problems across LeetCode & GeeksforGeeks platforms.",
       icon: <Code className="text-neutral-500 dark:text-neutral-400" size={16} />
     },
     {

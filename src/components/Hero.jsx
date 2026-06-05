@@ -194,7 +194,10 @@ export default function Hero() {
   useEffect(() => {
     if (showButtons && inputRef.current && !isTyping) {
       setTimeout(() => {
-        inputRef.current?.focus();
+        // Only focus if the user hasn't scrolled down significantly (i.e. is still looking at the terminal/Hero)
+        if (window.scrollY < 150) {
+          inputRef.current?.focus({ preventScroll: true });
+        }
       }, 100);
     }
   }, [showButtons, isTyping]);
@@ -209,7 +212,7 @@ export default function Hero() {
   // Click handler to focus input when terminal body is clicked
   const handleTerminalClick = () => {
     if (inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current.focus({ preventScroll: true });
     }
   };
 
@@ -528,7 +531,7 @@ export default function Hero() {
     // Auto-focus input after command completes
     setTimeout(() => {
       if (inputRef.current) {
-        inputRef.current.focus();
+        inputRef.current.focus({ preventScroll: true });
       }
     }, 100);
   };
@@ -647,7 +650,6 @@ export default function Hero() {
                     placeholder="type 'help'..."
                     disabled={isTyping}
                     className="flex-1 bg-transparent border-none outline-none font-mono text-xs md:text-sm text-cyan-400 caret-cyan-400 pl-1 placeholder-neutral-800 font-bold"
-                    autoFocus
                     autoComplete="off"
                   />
                   <button type="submit" aria-label="Submit command" className="text-neutral-600 hover:text-white transition-colors cursor-pointer pr-1">

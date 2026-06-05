@@ -36,32 +36,35 @@ export default function Skills() {
       colorClass: "bg-cyan-500",
       skills: [
         { name: "C++", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" },
-        { name: "JavaScript", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" }
+        { name: "JavaScript", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" },
+        { name: "Python", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" }
       ]
     },
     {
       title: "Frontend",
       colorClass: "bg-emerald-500",
       skills: [
-        { name: "React", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" },
-        { name: "HTML", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" },
-        { name: "CSS", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" },
-        { name: "Tailwind", image: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" }
+        { name: "React.js", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" },
+        { name: "Tailwind CSS", image: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
+        { name: "Router & Context", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/reactrouter/reactrouter-original.svg" },
+        { name: "HTML & CSS", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" }
       ]
     },
     {
       title: "Backend",
       colorClass: "bg-amber-500",
       skills: [
-        { name: "Node.js", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" },
-        { name: "Express.js", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" }
+        { name: "Node & Express", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" },
+        { name: "REST APIs", image: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" },
+        { name: "Auth (JWT, OAuth)", image: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/jwt-io.svg" },
+        { name: "Multer & Cloudinary", image: "https://www.svgrepo.com/show/353566/cloudinary.svg" }
       ]
     },
     {
       title: "Database",
       colorClass: "bg-purple-500",
       skills: [
-        { name: "MongoDB", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" },
+        { name: "MongoDB & Mongoose", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" },
         { name: "MySQL", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" }
       ]
     },
@@ -69,8 +72,10 @@ export default function Skills() {
       title: "Tools",
       colorClass: "bg-orange-500",
       skills: [
-        { name: "Git", image: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" },
-        { name: "GitHub", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" }
+        { name: "Git & GitHub", image: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" },
+        { name: "Postman", image: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" },
+        { name: "Vercel", image: "https://www.vectorlogo.zone/logos/vercel/vercel-icon.svg" },
+        { name: "MongoDB Atlas", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" }
       ]
     }
   ];
